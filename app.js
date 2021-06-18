@@ -14,5 +14,5 @@ app.use(UserRouter);
 //Defining Port
 const port = process.env.Port || 5000;
 const server = app.listen(port, () => {
-  console.log(`Ignio Skills listening at http://localhost:${port}`);
+  console.log(`Imaraat listening at http://localhost:${port}`);
 }); 
