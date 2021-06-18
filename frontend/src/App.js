@@ -1,10 +1,13 @@
-import './App.css';
+import {Provider} from "react-redux";
+import store from "./store";
 
 function App() {
   return (
-    <div className="App">
-      Imaraat.Com
-    </div>
+    <Provider store={store}>
+      <div className="text-center">
+        Imaraat.com
+      </div>
+    </Provider>
   );
 }
 
