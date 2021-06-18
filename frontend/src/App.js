@@ -1,8 +1,13 @@
+import {Provider} from "react-redux";
+import store from "./store";
+
 function App() {
   return (
-    <div className="text-center">
-      Imaraat.Com
-    </div>
+    <Provider store={store}>
+      <div className="text-center">
+        Imaraat.com
+      </div>
+    </Provider>
   );
 }
 
