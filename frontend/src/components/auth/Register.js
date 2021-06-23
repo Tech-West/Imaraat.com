@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import {connect} from "react-redux";
+import {register} from "../../actions/auth";
 
-const Register = () => {
+const Register = ({register}) => {
   const [credentials, setCredentials] = useState({
     email: "",
     username: "",
@@ -19,7 +21,9 @@ const Register = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(credentials);
+    if(password === password2){
+      register(username, email, password);
+    }
   };
 
   return (
@@ -112,4 +116,6 @@ const Register = () => {
   );
 };
 
-export default Register;
+
+
+export default connect(null, {register})(Register);
