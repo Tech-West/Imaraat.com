@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import {connect} from "react-redux";
-import {register} from "../../actions/auth";
+import { connect } from "react-redux";
+import { register } from "../../actions/auth";
 
-const Register = ({register}) => {
+const Register = ({ register, isAuthenticated, isLoading }) => {
   const [credentials, setCredentials] = useState({
     email: "",
     username: "",
@@ -21,10 +21,14 @@ const Register = ({register}) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if(password === password2){
+    if (password === password2) {
       register(username, email, password);
     }
   };
+
+  if (isAuthenticated && !isLoading) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <div className="flex items-center justify-center min-w-full min-h-screen bg-register-bg bg-cover py-24">
@@ -116,6 +120,9 @@ const Register = ({register}) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  isLoading: state.auth.isLoading,
+});
 
-
-export default connect(null, {register})(Register);
+export default connect(mapStateToProps, { register })(Register);
