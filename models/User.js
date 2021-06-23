@@ -4,13 +4,7 @@ const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  //Defining full name property on User Schema
-  fullName: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-
+  
   //Defining the email property on User Schema
   email: {
     type: String,
