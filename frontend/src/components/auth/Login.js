@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import { login } from "../../actions/auth";
+import { connect } from "react-redux";
 
-const Login = () => {
+const Login = ({ login, isAuthenticated, isLoading }) => {
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -16,8 +18,16 @@ const Login = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(credentials);
+    if (email && password) {
+      login(email, password);
+    } else {
+      console.log("Fill both fields");
+    }
   };
+
+  if (isAuthenticated && !isLoading) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <div className="flex items-center justify-center min-w-full min-h-screen bg-login-bg bg-cover py-24">
@@ -76,4 +86,9 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  isLoading: state.auth.isLoading,
+});
+
+export default connect(mapStateToProps, { login })(Login);
