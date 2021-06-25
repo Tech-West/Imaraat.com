@@ -17,6 +17,10 @@ module.exports = {
         orange: {
           primary: "#FF5F1F",
         },
+        danger: {
+          primary: "#CA0B00",
+          secondary: "#f5beba",
+        },
       },
     },
   },
