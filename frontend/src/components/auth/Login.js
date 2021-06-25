@@ -4,8 +4,16 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { login } from "../../actions/auth";
 import { connect } from "react-redux";
+import { setAlerts, removeAlerts } from "../../actions/alerts";
+import Alerts from "../Alerts/Alerts";
 
-const Login = ({ login, isAuthenticated, isLoading }) => {
+const Login = ({
+  login,
+  removeAlerts,
+  setAlerts,
+  isAuthenticated,
+  isLoading,
+}) => {
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -18,10 +26,11 @@ const Login = ({ login, isAuthenticated, isLoading }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    removeAlerts();
     if (email && password) {
       login(email, password);
     } else {
-      console.log("Fill both fields");
+      setAlerts([{ msg: "Fields cannot be empty", type: "DANGER" }]);
     }
   };
 
@@ -64,6 +73,7 @@ const Login = ({ login, isAuthenticated, isLoading }) => {
               placeholder="Password"
             />
           </div>
+          <Alerts />
           <input
             className="w-full p-3 rounded-md border mb-5 outline-none text-white cursor-pointer transition bg-primary-gradient"
             type="submit"
@@ -91,4 +101,6 @@ const mapStateToProps = (state) => ({
   isLoading: state.auth.isLoading,
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { login, removeAlerts, setAlerts })(
+  Login
+);
