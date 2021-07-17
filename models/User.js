@@ -4,19 +4,12 @@ const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  //Defining full name property on User Schema
-  fullName: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-
   //Defining the email property on User Schema
   email: {
     type: String,
-    required: true,
+    required: [true, "Email field cannot be empty"],
     trim: true,
-    unique: true,
+    unique: [true, "This email already exists"],
     validate(value) {
       if (!validator.isEmail(value)) {
         throw new Error("Provided Email is not a valid Email");
@@ -27,7 +20,7 @@ const userSchema = new mongoose.Schema({
   //Defining username property on User Schema
   username: {
     type: String,
-    required: true,
+    required: [true, "Username field cannot be empty"],
     trim: true,
     unique: true,
   },
@@ -35,9 +28,9 @@ const userSchema = new mongoose.Schema({
   //Defining the password property on User Schema
   password: {
     type: String,
-    required: true,
+    required: [true, "Password field cannot be empty"],
     trim: true,
-    minlength: 8,
+    minlength: [8, "Password length must me greater than 8 characters"],
   },
 
   tokens: [
@@ -81,17 +74,13 @@ userSchema.statics.findByCredentials = async (email, password) => {
   myError.prototype = new Error();
 
   if (!user) {
-    throw new myError(
-      "Invalid Login attempt. Please provide valid credentials"
-    );
+    throw new myError("Invalid Credentials");
   }
   const validPassword = await bcrypt.compare(password, user.password);
   if (validPassword) {
     return user;
   } else {
-    throw new myError(
-      "Invalid Login attempt. Please provide valid credentials"
-    );
+    throw new myError("Invalid Credentials");
   }
 };
 

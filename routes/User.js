@@ -4,7 +4,7 @@ const User = require("../models/User");
 const router = new express.Router();
 
 //To register a new user
-router.post("/api/user/register", async (req, res) => {
+router.post("/api/register", async (req, res) => {
   const user = new User(req.body);
   try {
     await user.save();
@@ -15,7 +15,7 @@ router.post("/api/user/register", async (req, res) => {
   }
 });
 //To login to into the system
-router.post("/api/user/login", async (req, res) => {
+router.post("/api/login", async (req, res) => {
   try {
     const user = await User.findByCredentials(
       req.body.email,
