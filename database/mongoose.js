@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
+const { mongoURI } = require("../config/dev.js");
 
 //CONNECTING TO DATABASE
 mongoose
-  .connect(
-    "mongodb://ghulamghousdev:ggazfmdm12345@imaraat-shard-00-00.rzylt.mongodb.net:27017,imaraat-shard-00-01.rzylt.mongodb.net:27017,imaraat-shard-00-02.rzylt.mongodb.net:27017/imaraat?ssl=true&replicaSet=atlas-hnkpmi-shard-0&authSource=admin&retryWrites=true&w=majority",
-    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
-  )
+  .connect(mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(() => {
     console.log("Connected to database ");
   })
