@@ -34,16 +34,21 @@ const Register = ({ register, removeAlerts, isAuthenticated, isLoading }) => {
   }
 
   return (
-    <div className="flex items-center justify-center min-w-full min-h-screen bg-register-bg bg-cover py-24">
-      <div className="w-96 rounded-lg border py-8 px-6 md:py-8 md:px-8 bg-light-op-09">
-        <h2 className="text-center text-2xl mb-5">Register to continue!</h2>
+    <div
+      style={{ minHeight: "86vh" }}
+      className="flex items-center justify-center min-w-full bg-register-bg bg-cover py-12"
+    >
+      <div className="w-96 rounded-lg border py-8 px-6 md:py-8 md:px-8 bg-light-op-09 dark:bg-dark-op-09 dark:border-dark-secondary">
+        <h2 className="text-center text-2xl mb-5 dark:text-white">
+          Register to continue!
+        </h2>
         <form onSubmit={handleFormSubmit}>
-          <div className="w-full rounded-md border mb-2.5 bg-white flex items-center overflow-hidden">
+          <div className="w-full rounded-md border mb-2.5 bg-white flex items-center overflow-hidden dark:bg-dark-primary dark:border-dark-secondary">
             <div className="p-2.5">
               <MailOutlineIcon style={{ color: "#FF5F1F" }} />
             </div>
             <input
-              className="outline-none focus:border-orange-primary flex-1 py-2.5"
+              className="outline-none focus:border-orange-primary flex-1 py-2.5 dark:bg-dark-primary dark:text-white"
               type="text"
               name="email"
               value={email}
@@ -54,12 +59,12 @@ const Register = ({ register, removeAlerts, isAuthenticated, isLoading }) => {
             />
           </div>
 
-          <div className="w-full rounded-md border mb-2.5 bg-white flex items-center overflow-hidden">
+          <div className="w-full rounded-md border mb-2.5 bg-white flex items-center overflow-hidden dark:bg-dark-primary dark:border-dark-secondary">
             <div className="p-2.5">
               <PersonOutlineIcon style={{ color: "#FF5F1F" }} />
             </div>
             <input
-              className="outline-none focus:border-orange-primary flex-1 py-2.5"
+              className="outline-none focus:border-orange-primary flex-1 py-2.5 dark:bg-dark-primary dark:text-white"
               type="text"
               name="username"
               value={username}
@@ -70,12 +75,12 @@ const Register = ({ register, removeAlerts, isAuthenticated, isLoading }) => {
             />
           </div>
 
-          <div className="w-full rounded-md border mb-2.5 bg-white flex items-center overflow-hidden">
+          <div className="w-full rounded-md border mb-2.5 bg-white flex items-center overflow-hidden dark:bg-dark-primary dark:border-dark-secondary">
             <div className="p-2.5">
               <LockOutlinedIcon style={{ color: "#FF5F1F" }} />
             </div>
             <input
-              className="outline-none focus:border-orange-primary flex-1 py-2.5"
+              className="outline-none focus:border-orange-primary flex-1 py-2.5 dark:bg-dark-primary dark:text-white"
               type="password"
               name="password"
               value={password}
@@ -86,12 +91,12 @@ const Register = ({ register, removeAlerts, isAuthenticated, isLoading }) => {
             />
           </div>
 
-          <div className="w-full rounded-md border mb-2.5 bg-white flex items-center overflow-hidden">
+          <div className="w-full rounded-md border mb-2.5 bg-white flex items-center overflow-hidden dark:bg-dark-primary dark:border-dark-secondary">
             <div className="p-2.5">
               <LockOutlinedIcon style={{ color: "#FF5F1F" }} />
             </div>
             <input
-              className="outline-none focus:border-orange-primary flex-1 py-2.5"
+              className="outline-none focus:border-orange-primary flex-1 py-2.5 dark:bg-dark-primary dark:text-white"
               type="password"
               name="password2"
               value={password2}
@@ -103,13 +108,13 @@ const Register = ({ register, removeAlerts, isAuthenticated, isLoading }) => {
           </div>
           <Alerts />
           <input
-            className="w-full p-2.5 rounded-md border mb-5 outline-none text-white cursor-pointer transition bg-primary-gradient"
+            className="w-full p-2.5 rounded-md border mb-5 outline-none text-white cursor-pointer transition bg-primary-gradient dark:border-dark-secondary"
             type="submit"
             value="Register"
           />
         </form>
         <div className="">
-          <p className="text-center">
+          <p className="text-center dark:text-white">
             Already have an account?{" "}
             <Link
               className="cursor-pointer text-orange-primary font-semibold"

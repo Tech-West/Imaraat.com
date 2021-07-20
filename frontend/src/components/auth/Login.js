@@ -26,7 +26,6 @@ const Login = ({
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    removeAlerts();
     if (email && password) {
       login(email, password);
     } else {
@@ -35,20 +34,25 @@ const Login = ({
   };
 
   if (isAuthenticated && !isLoading) {
-    return <Redirect to="/" />;
+    return <Redirect to="/profile" />;
   }
 
   return (
-    <div className="flex items-center justify-center min-w-full min-h-screen bg-login-bg bg-cover py-24">
-      <div className="w-96 rounded-lg border py-8 px-6 md:py-8 md:px-8 bg-light-op-09">
-        <h2 className="text-center text-2xl mb-5">Login to continue!</h2>
+    <div
+      style={{ minHeight: "86vh" }}
+      className="flex items-center justify-center min-w-full bg-login-bg bg-cover py-12"
+    >
+      <div className="w-96 rounded-lg border py-8 px-6 md:py-8 md:px-8 bg-light-op-09 dark:bg-dark-op-09 dark:border-dark-primary">
+        <h2 className="text-center text-2xl mb-5 dark:text-gray-200">
+          Login to continue!
+        </h2>
         <form onSubmit={handleFormSubmit}>
-          <div className="w-full rounded-md border mb-2.5 bg-white flex items-center overflow-hidden">
+          <div className="w-full rounded-md border dark:border-dark-secondary mb-2.5 bg-white dark:bg-dark-primary flex items-center overflow-hidden  dark:text-white">
             <div className="p-2.5">
               <MailOutlineIcon style={{ color: "#FF5F1F" }} />
             </div>
             <input
-              className="outline-none focus:border-orange-primary flex-1 p-2.5"
+              className="outline-none focus:border-orange-primary flex-1 p-2.5 dark:bg-dark-primary"
               type="text"
               name="email"
               value={email}
@@ -58,12 +62,12 @@ const Login = ({
               placeholder="Email Address"
             />
           </div>
-          <div className="w-full rounded-md border mb-2.5 bg-white flex items-center overflow-hidden">
+          <div className="w-full rounded-md border  dark:border-dark-secondary mb-2.5 bg-white dark:bg-dark-primary flex items-center overflow-hidden  dark:text-white">
             <div className="p-2.5">
               <LockOutlinedIcon style={{ color: "#FF5F1F" }} />
             </div>
             <input
-              className="outline-none focus:border-orange-primary flex-1 p-2.5"
+              className="outline-none focus:border-orange-primary flex-1 p-2.5 dark:bg-dark-primary"
               type="password"
               name="password"
               value={password}
@@ -75,13 +79,13 @@ const Login = ({
           </div>
           <Alerts />
           <input
-            className="w-full p-2.5 rounded-md border mb-5 outline-none text-white cursor-pointer transition bg-primary-gradient"
+            className="w-full p-2.5 rounded-md border dark:border-dark-secondary mb-5 outline-none text-white cursor-pointer transition bg-primary-gradient"
             type="submit"
             value="Login"
           />
         </form>
         <div className="">
-          <p className="text-center">
+          <p className="text-center dark:text-white">
             Don't have an account?{" "}
             <Link
               className="cursor-pointer text-orange-primary font-semibold"
