@@ -1,6 +1,6 @@
 module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {
       backgroundImage: (theme) => ({
@@ -12,6 +12,7 @@ module.exports = {
       backgroundColor: (theme) => ({
         ...theme("colors"),
         "light-op-09": "rgba(255,255,255,0.8)",
+        "dark-op-09": "rgba(13,13,13,0.9)",
       }),
       colors: {
         orange: {
@@ -20,6 +21,10 @@ module.exports = {
         danger: {
           primary: "#CA0B00",
           secondary: "#f5beba",
+        },
+        dark: {
+          primary: "#222222",
+          secondary: "#444444",
         },
       },
     },
