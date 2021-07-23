@@ -2,8 +2,9 @@ import { connect } from "react-redux";
 import { useState } from "react";
 import { setAlerts } from "../../actions/alerts";
 import Alerts from "../Alerts/Alerts";
+import { createProfile } from "../../actions/profile";
 
-const CreateProfile = ({ setAlerts }) => {
+const CreateProfile = ({ setAlerts, createProfile }) => {
   const [profile, setProfile] = useState({
     companyName: "",
     companyBio: "",
@@ -33,7 +34,7 @@ const CreateProfile = ({ setAlerts }) => {
       companyAddress &&
       companyPhone
     ) {
-      console.log(profile);
+      createProfile(profile);
     } else {
       setAlerts([{ msg: "All fields must be filled", type: "DANGER" }]);
     }
@@ -132,4 +133,4 @@ const CreateProfile = ({ setAlerts }) => {
     </div>
   );
 };
-export default connect(null, { setAlerts })(CreateProfile);
+export default connect(null, { setAlerts, createProfile })(CreateProfile);
