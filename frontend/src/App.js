@@ -4,7 +4,6 @@ import store from "./store";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Home from "./components/Home/Home";
-import Navbar from "./components/Navbar/Navbar";
 import CreateProfile from "./components/Profile/CreateProfile";
 
 function App() {
@@ -12,7 +11,6 @@ function App() {
     <div className="transition duration-500">
       <Provider store={store}>
         <Router>
-          <Navbar />
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />

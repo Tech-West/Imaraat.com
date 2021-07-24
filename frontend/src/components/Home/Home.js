@@ -1,24 +1,25 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import Navbar from "../Navbar/Navbar";
+import HeroBanner from "../Banner/HeroBanner"
+import ListingBanner from "../Banner/ListingBanner";
+import Footer from "../Footer/Footer"
 
 const Home = ({ isLoading, isAuthenticated }) => {
   return (
     <div
       style={{ minHeight: "86vh" }}
-      className="flex justify-center items-center flex-col"
+      className=""
     >
+      <Navbar />
       {!isLoading && isAuthenticated ? (
         <h1>Welcome to Imaraat</h1>
       ) : (
         <Fragment>
-          <h1 className="text-2xl mb-5">Home</h1>
-          <Link className="p-3 border mb-3" to="/register">
-            Register
-          </Link>
-          <Link className="p-3 border mb-3" to="/login">
-            Login
-          </Link>
+          <HeroBanner />
+          <ListingBanner />
+          <Footer />
         </Fragment>
       )}
     </div>

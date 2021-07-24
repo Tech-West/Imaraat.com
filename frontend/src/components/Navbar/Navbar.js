@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 import { connect } from "react-redux";
-import Logo from "../../images/logo-transparent.png";
-import LogoDarkBg from "../../images/logo-transparent-dark.png";
+import lightModeLogo from "../../images/logo-light-mode.png";
+import darkModeLogo from "../../images/logo-dark-mode.png";
 import { Link } from "react-router-dom";
 import { Avatar, FormGroup, FormControlLabel, Switch } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -45,9 +45,13 @@ const Navbar = ({ isAuthenticated, isLoading, user }) => {
       <nav className="py-5 w-4/5 mx-auto flex items-center justify-between">
         <a style={{ width: "180px" }} href="/">
           {checked ? (
-            <img style={{ width: "180px" }} alt="sitelogo" src={LogoDarkBg} />
+            <img style={{ width: "180px" }} alt="sitelogo" src={darkModeLogo} />
           ) : (
-            <img style={{ width: "180px" }} alt="sitelogo" src={Logo} />
+            <img
+              style={{ width: "180px" }}
+              alt="sitelogo"
+              src={lightModeLogo}
+            />
           )}
         </a>
 
