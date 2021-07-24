@@ -3,6 +3,7 @@ import {
   PROFILE_LOAD_SUCCESS,
   PROFILE_CREATION_FAILED,
   PROFILE_LOAD_FAILED,
+  PROFILE_AVATAR_UPLOADED,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -24,6 +25,14 @@ const profile = (profile = initialState, action) => {
       ...profile,
       data: null,
       isLoading: false,
+    };
+  } else if (type === PROFILE_AVATAR_UPLOADED) {
+    return {
+      ...profile,
+      data: {
+        ...profile.data,
+        logoImageURL: payload,
+      },
     };
   }
 
