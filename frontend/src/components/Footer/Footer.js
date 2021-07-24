@@ -1,4 +1,3 @@
-import { orange } from '@material-ui/core/colors'
 import React from 'react'
 
 export default function Footer() {

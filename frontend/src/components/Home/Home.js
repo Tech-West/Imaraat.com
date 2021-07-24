@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Navbar from "../Navbar/Navbar";
 import HeroBanner from "../Banner/HeroBanner"
