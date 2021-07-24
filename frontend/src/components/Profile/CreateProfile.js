@@ -3,8 +3,10 @@ import { useState } from "react";
 import { setAlerts } from "../../actions/alerts";
 import Alerts from "../Alerts/Alerts";
 import { createProfile } from "../../actions/profile";
+import { useHistory } from "react-router-dom";
 
 const CreateProfile = ({ setAlerts, createProfile }) => {
+  const history = useHistory();
   const [profile, setProfile] = useState({
     companyName: "",
     companyBio: "",
@@ -34,7 +36,7 @@ const CreateProfile = ({ setAlerts, createProfile }) => {
       companyAddress &&
       companyPhone
     ) {
-      createProfile(profile);
+      createProfile(profile, history);
     } else {
       setAlerts([{ msg: "All fields must be filled", type: "DANGER" }]);
     }
