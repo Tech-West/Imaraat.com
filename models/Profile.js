@@ -5,6 +5,7 @@ const profileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
+    unique: true,
   },
 
   companyName: {
@@ -22,16 +23,13 @@ const profileSchema = new mongoose.Schema({
     type: String,
   },
 
-  offices: [
-    {
-      address: {
-        type: String,
-      },
-      phone: {
-        type: String,
-      },
-    },
-  ],
+  companyAddress: {
+    type: String,
+  },
+
+  companyPhone: {
+    type: String,
+  },
 
   logoImageUrl: {
     type: String,
