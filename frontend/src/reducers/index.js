@@ -4,9 +4,9 @@ import alerts from "./alerts";
 import profile from "./profile";
 
 const rootReducer = combineReducers({
-  auth,
   alerts,
   profile,
+  auth,
 });
 
 export default rootReducer;

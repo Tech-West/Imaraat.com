@@ -11,16 +11,15 @@ const initialState = {
   data: null,
 };
 
-const profile = (profile = initialState, action) => {
+const profileReducer = (profile = initialState, action) => {
   const { type, payload } = action;
-
   if (type === PROFILE_CREATION_SUCCESS || type === PROFILE_LOAD_SUCCESS) {
     return {
       ...profile,
       data: payload,
       isLoading: false,
     };
-  } else if (type === PROFILE_CREATION_FAILED || type === PROFILE_LOAD_FAILED) {
+  } else if (type === PROFILE_CREATION_FAILED || PROFILE_LOAD_FAILED) {
     return {
       ...profile,
       data: null,
@@ -39,4 +38,4 @@ const profile = (profile = initialState, action) => {
   return profile;
 };
 
-export default profile;
+export default profileReducer;

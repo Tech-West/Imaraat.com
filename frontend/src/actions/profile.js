@@ -4,7 +4,6 @@ import {
   PROFILE_CREATION_FAILED,
   PROFILE_LOAD_SUCCESS,
   PROFILE_LOAD_FAILED,
-  PROFILE_AVATAR_UPLOADED,
 } from "./actionTypes";
 
 export const createProfile = (profile, history) => async (dispatch) => {
@@ -22,11 +21,10 @@ export const createProfile = (profile, history) => async (dispatch) => {
     const res = await axios.post("/api/profile", body, config);
     dispatch({
       type: PROFILE_CREATION_SUCCESS,
-      payload: res.data,
+      payload: res.data.profile,
     });
     history.push("/avatar/upload");
   } catch (err) {
-    console.log(err);
     dispatch({
       type: PROFILE_CREATION_FAILED,
     });
