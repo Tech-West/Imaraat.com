@@ -5,14 +5,9 @@ const router = new express.Router();
 
 //To create new company profile
 router.post("/api/profile", auth, async (req, res) => {
-  const foundProfile = Profile.findOne({ user: req.user._id });
-  if (foundProfile) {
-    return res.status(400).send({ err: "Profile already exists" });
-  }
   const profile = new Profile({ user: req.user._id, ...req.body });
   try {
     await profile.save();
-    await profile.populate("user").execPopulate();
     res.status(200).send({ profile });
   } catch (error) {
     res.status(400).send(error);

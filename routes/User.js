@@ -42,7 +42,8 @@ router.post("/api/user/logout", auth, async (req, res) => {
 });
 
 //To get user
-router.get("/api/users/me", auth, (req, res) => {
+router.get("/api/user", auth, (req, res) => {
+  console.log("Hello World");
   try {
     res.status(200).send(req.user);
   } catch (err) {
