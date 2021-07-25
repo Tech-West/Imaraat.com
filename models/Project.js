@@ -38,14 +38,12 @@ const projectSchema = new mongoose.Schema({
 
   coverImageUrl: {
     type: String,
-    required: true,
   },
 
   gallery: [
     {
       imageUrl: {
         type: String,
-        required: true,
       },
     },
   ],
