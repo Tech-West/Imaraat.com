@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
@@ -9,10 +9,6 @@ import { register } from "../../actions/auth";
 import { removeAlerts } from "../../actions/alerts";
 
 const Register = ({ register, removeAlerts, isAuthenticated, isLoading }) => {
-  useEffect(() => {
-    removeAlerts();
-  }, [removeAlerts]);
-
   const [credentials, setCredentials] = useState({
     email: "",
     username: "",
@@ -34,7 +30,7 @@ const Register = ({ register, removeAlerts, isAuthenticated, isLoading }) => {
   };
 
   if (isAuthenticated && !isLoading) {
-    return <Redirect to="/" />;
+    return <Redirect to="/profile" />;
   }
 
   return (

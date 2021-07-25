@@ -19,10 +19,6 @@ const Login = ({
     password: "",
   });
 
-  useEffect(() => {
-    removeAlerts();
-  }, [removeAlerts]);
-
   const { email, password } = credentials;
   const handleChange = (event) => {
     setCredentials({ ...credentials, [event.target.name]: event.target.value });
