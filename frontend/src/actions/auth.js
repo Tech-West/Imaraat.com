@@ -3,6 +3,8 @@ import {
   REGISTER_FAIL,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  USER_LOAD_SUCCESS,
+  USER_LOAD_FAIL,
 } from "./actionTypes";
 import axios from "axios";
 import setGlobalAuthToken from "../utils/setToken";
@@ -72,6 +74,37 @@ export const login = (email, password) => async (dispatch) => {
     }
     dispatch({
       type: LOGIN_FAIL,
+    });
+  }
+};
+
+export const loadUser = () => async (dispatch) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    setGlobalAuthToken(token);
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    try {
+      const user = await axios.get("/api/user", config);
+      dispatch({
+        type: USER_LOAD_SUCCESS,
+        payload: {
+          token: token,
+          user: user.data,
+        },
+      });
+    } catch (error) {
+      dispatch({
+        type: USER_LOAD_FAIL,
+      });
+    }
+  } else {
+    dispatch({
+      type: USER_LOAD_FAIL,
     });
   }
 };
