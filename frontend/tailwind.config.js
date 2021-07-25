@@ -17,7 +17,7 @@ module.exports = {
       colors: {
         orange: {
           primary: "#FF5F1F",
-          secondary: "#DB460B"
+          secondary: "#DB460B",
         },
         danger: {
           primary: "#CA0B00",
