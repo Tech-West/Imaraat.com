@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -19,6 +19,10 @@ const Login = ({
     password: "",
   });
 
+  useEffect(() => {
+    removeAlerts();
+  }, [removeAlerts]);
+
   const { email, password } = credentials;
   const handleChange = (event) => {
     setCredentials({ ...credentials, [event.target.name]: event.target.value });
@@ -34,7 +38,7 @@ const Login = ({
   };
 
   if (isAuthenticated && !isLoading) {
-    return <Redirect to="/profile" />;
+    return <Redirect to="/" />;
   }
 
   return (
