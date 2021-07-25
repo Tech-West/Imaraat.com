@@ -38,92 +38,102 @@ const Navbar = ({ isAuthenticated, isLoading, user }) => {
   };
 
   return (
-    <div
-      style={{ height: "14vh" }}
-      className="border-b-4 border-grey flex items-center bg-white dark:bg-dark-primary dark:border-dark-secondary"
-    >
-      <nav className="py-5 w-4/5 mx-auto flex items-center justify-between">
-        <a style={{ width: "180px" }} href="/">
-          {checked ? (
-            <img style={{ width: "180px" }} alt="sitelogo" src={darkModeLogo} />
-          ) : (
-            <img
-              style={{ width: "180px" }}
-              alt="sitelogo"
-              src={lightModeLogo}
-            />
-          )}
-        </a>
+    <Fragment>
+      {isLoading ? (
+        <p>Loading</p>
+      ) : (
+        <div
+          style={{ height: "14vh" }}
+          className="border-b-4 border-grey flex items-center bg-white dark:bg-dark-primary dark:border-dark-secondary"
+        >
+          <nav className="py-5 w-4/5 mx-auto flex items-center justify-between">
+            <a style={{ width: "180px" }} href="/">
+              {checked ? (
+                <img
+                  style={{ width: "180px" }}
+                  alt="sitelogo"
+                  src={darkModeLogo}
+                />
+              ) : (
+                <img
+                  style={{ width: "180px" }}
+                  alt="sitelogo"
+                  src={lightModeLogo}
+                />
+              )}
+            </a>
 
-        <ul className="flex items-center">
-          <li className="text-black dark:text-white">
-            <FormGroup>
-              <FormControlLabel
-                control={
-                  <Switch
-                    size="small"
-                    checked={checked}
-                    onChange={toggleChecked}
-                    classes={{
-                      root: classes.root,
-                      switchBase: classes.switchBase,
-                      thumb: classes.thumb,
-                      track: classes.track,
-                      checked: classes.checked,
-                    }}
+            <ul className="flex items-center">
+              <li className="text-black dark:text-white">
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        size="small"
+                        checked={checked}
+                        onChange={toggleChecked}
+                        classes={{
+                          root: classes.root,
+                          switchBase: classes.switchBase,
+                          thumb: classes.thumb,
+                          track: classes.track,
+                          checked: classes.checked,
+                        }}
+                      />
+                    }
+                    label="Darkmode"
                   />
-                }
-                label="Darkmode"
-              />
-            </FormGroup>
-          </li>
-          {!isLoading && isAuthenticated ? (
-            <Fragment>
-              <li className="ml-6">
-                <Link
-                  to="/login"
-                  className="text-gray-500 hover:text-orange-primary transition-colors font-medium dark:text-white"
-                >
-                  Add Project
-                </Link>
+                </FormGroup>
               </li>
-              <li className="ml-6">
-                <Link
-                  to="/login"
-                  className="text-gray-500 hover:text-orange-primary transition-colors font-medium dark:text-white"
-                >
-                  All Projects
-                </Link>
-              </li>
-              <li className="cursor-pointer ml-6">
-                <Avatar className={classes.orange}>
-                  {user.username[0].toUpperCase()}
-                </Avatar>
-              </li>
-            </Fragment>
-          ) : (
-            <Fragment>
-              <li>
-                <Link
-                  to="/login"
-                  className="py-2 px-5 rounded-md border border-orange-primary text-orange-primary hover:text-orange-primary transition-colors text-base"
-                >
-                  Login
-                </Link>
-              </li>
-              <li className="ml-3">
-                <Link
-                  to="/register"
-                  className="py-2 px-5 rounded-md  border border-orange-primary  text-grey-900 transition-colors text-base bg-primary-gradient text-white"
-                >
-                  Register
-                </Link>
-              </li>
-            </Fragment>
-          )}
-        </ul>
-      </nav>
-    </div>
+              {isAuthenticated ? (
+                <Fragment>
+                  <li className="ml-6">
+                    <Link
+                      to="/login"
+                      className="text-gray-500 hover:text-orange-primary transition-colors font-medium dark:text-white"
+                    >
+                      Add Project
+                    </Link>
+                  </li>
+                  <li className="ml-6">
+                    <Link
+                      to="/login"
+                      className="text-gray-500 hover:text-orange-primary transition-colors font-medium dark:text-white"
+                    >
+                      All Projects
+                    </Link>
+                  </li>
+                  <li className="cursor-pointer ml-6">
+                    <Avatar className={classes.orange}>
+                      {user.username[0].toUpperCase()}
+                    </Avatar>
+                  </li>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <li>
+                    <Link
+                      to="/login"
+                      className="py-2 px-5 rounded-md border border-orange-primary text-orange-primary hover:text-orange-primary transition-colors text-base"
+                    >
+                      Login
+                    </Link>
+                  </li>
+                  <li className="ml-3">
+                    <Link
+                      to="/register"
+                      className="py-2 px-5 rounded-md  border border-orange-primary  text-grey-900 transition-colors text-base bg-primary-gradient text-white"
+                    >
+                      Register
+                    </Link>
+                  </li>
+                </Fragment>
+              )}
+            </ul>
+          </nav>
+        </div>
+      )}
+    </Fragment>
   );
 };
 
