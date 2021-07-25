@@ -45,11 +45,13 @@ const CreateProfile = ({ setAlerts, createProfile }) => {
   return (
     <div
       style={{ minHeight: "86vh" }}
-      className="flex items-center justify-center min-w-full py-6 dark:bg-dark-primary"
+      className="flex items-center justify-center min-w-full py-6 bg-gray-100 dark:bg-dark-primary transition"
     >
-      <div className="w-3/5 rounded-lg border bg-light-op-09 dark:bg-dark-op-09 dark:border-dark-secondary">
-        <div className="py-4 px-8 border-b dark:border-dark-secondary">
-          <h2 className="text-xl dark:text-white">Setup Company Profile</h2>
+      <div className="w-3/5 rounded-lg border bg-light-op-09 dark:bg-dark-op-09 dark:border-dark-secondary transition">
+        <div className="py-4 px-8 border-b dark:border-dark-secondary transition">
+          <h2 className="text-xl dark:text-white transition">
+            Setup Company Profile
+          </h2>
         </div>
         <form
           className="py-8 px-6 md:py-8 md:px-8"
@@ -57,7 +59,7 @@ const CreateProfile = ({ setAlerts, createProfile }) => {
         >
           <Alerts />
           {/*Label for Company Name*/}
-          <label className="block mb-2 text-sm dark:text-white">
+          <label className="block mb-2 text-sm dark:text-white transition">
             Company Name
           </label>
           <input
@@ -71,7 +73,7 @@ const CreateProfile = ({ setAlerts, createProfile }) => {
             }}
           />
           {/*Label for Company Bio*/}
-          <label className="block mb-2 text-sm dark:text-white">
+          <label className="block mb-2 text-sm dark:text-white transition">
             Company Bio
           </label>
           <textarea
@@ -84,7 +86,7 @@ const CreateProfile = ({ setAlerts, createProfile }) => {
             }}
           />
           {/*Label for Company Bio*/}
-          <label className="block mb-2 text-sm dark:text-white">
+          <label className="block mb-2 text-sm dark:text-white transition">
             Company Website
           </label>
           <input
@@ -98,7 +100,7 @@ const CreateProfile = ({ setAlerts, createProfile }) => {
             }}
           />
           {/*Label for Company Office Address*/}
-          <label className="block mb-2 text-sm dark:text-white">
+          <label className="block mb-2 text-sm dark:text-white transition">
             Company Address
           </label>
           <input
@@ -112,7 +114,7 @@ const CreateProfile = ({ setAlerts, createProfile }) => {
             }}
           />
           {/*Label for Company Office Phone*/}
-          <label className="block mb-2 text-sm dark:text-white">
+          <label className="block mb-2 text-sm dark:text-white transition">
             Company Phone
           </label>
           <input
