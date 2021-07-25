@@ -10,6 +10,7 @@ import UploadAvatar from "./components/Profile/UploadAvatar";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import Project from "./components/Projects/Project";
 import { loadUser } from "./actions/auth";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/register" component={Register} />
             <Route path="/profile" component={CreateProfile} />
             <Route path="/avatar/upload" component={UploadAvatar} />
+            <Route path="/project" component={Project} />
             <Route path="/" exact component={Home} />
           </Switch>
           <Footer />
